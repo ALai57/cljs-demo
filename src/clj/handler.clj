@@ -32,8 +32,8 @@
       (-> (resource-response "example.html" {:root "public"})
           (content-type "text/html")))
 
-    (GET "/todomvc" []
-      (-> (resource-response "todomvc.html" {:root "public"})
+    (GET "/reframe" []
+      (-> (resource-response "reframe.html" {:root "public"})
           (content-type "text/html")))
 
     (GET "/ping" []

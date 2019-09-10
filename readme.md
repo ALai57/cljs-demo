@@ -1,23 +1,35 @@
 
-This is a template for a Clojure backend and Clojurescript frontend.
+This is an example app that uses a Clojure backend and Clojurescript frontend.
 The app must run on Java 11.
 
 
 The template includes:
 - Server with handler
-- Basic template for sortable react table
-- Postgres backend (not validated yet)
+- CLJS app
 
 
-*Servers and development environment*
+*Development environment*
 
 How to start server:
 
 ```lein run```
 
-How to start front end developing with hot reloading:
+
+How to start CLJS:
 
 ```lein figwheel```
+
+
+How to start CLJS with in-editor REPLing
+```
+Start CLJ repl
+
+(use 'figwheel-sidecar.repl-api)
+(start-figwheel! *Optionally insert profile name*)
+(cljs-repl *Optionally insert profile name*)
+
+```
+
 
 *How to setup postgres:*
 
@@ -51,7 +63,7 @@ Helpful psql commands:
    select schema_name from information_schema.schemata;
 ```
 
-Testing after rename
+
 
 
 *** Must have NPM installed to manage JS dependencies.

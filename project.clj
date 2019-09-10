@@ -1,5 +1,5 @@
-(defproject full-stack-template "0.0.1"
-  :description "Template for full stack development in Clojure"
+(defproject cljs-demo "0.0.1"
+  :description "A demo app showing how CLJS works"
   :dependencies [[cheshire "5.8.1"]
                  [clj-http "3.9.1"]
                  [coreagile/defenv "1.0.2"]
@@ -37,37 +37,54 @@
   :ring {:handler clj.handler/app
          :init clj.handler/init-routes}
   :aot :all
-  :uberjar-name "full-stack-template.jar"
+  :uberjar-name "cljs-demo.jar"
   :main clj.handler
   :figwheel {:ring-handler clj.handler/app
              :css-dirs ["resources/public/css"]}
   :clean-targets ^{:protect false} ["resources/public/js" "target"]
-  :cljsbuild {:builds
-              {
-               :dev {:source-paths ["src/cljs"]
-                     :figwheel {:open-urls ["http://localhost:3449/example"]}
-                     :compiler {:main full_stack_template.example
-                                :asset-path "js/compiled/out"
-                                :output-to "resources/public/js/compiled/example.js"
-                                :output-dir "resources/public/js/compiled/out"
-                                :source-map-timestamp true
-                                :npm-deps {:capitalize "2.0.0"}
-                                :install-deps true}}
+  :cljsbuild
+  {:builds
+   {
+    :dev {:source-paths ["src/cljs"]
+          :figwheel {:open-urls ["http://localhost:3449/example"]}
+          :compiler {:main cljs_demo.example
+                     :asset-path "js/compiled/out"
+                     :output-to "resources/public/js/compiled/example.js"
+                     :output-dir "resources/public/js/compiled/out"
+                     :source-map-timestamp true
+                     :npm-deps {:capitalize "2.0.0"}
+                     :install-deps true}}
 
-               :todomvc {:source-paths ["src/todomvc"]
-                         :figwheel {:open-urls ["http://localhost:3449/todomvc"]
-                                    :on-jsload "todomvc.core/main"}
-                         :compiler {:main todomvc.core
-                                    :asset-path "js/compiled/out_todomvc"
-                                    :optimizations :none
-                                    :output-to "resources/public/js/compiled/todomvc.js"
-                                    :output-dir "resources/public/js/compiled/out_todomvc"
-                                    :source-map true
-                                    :source-map-timestamp true}}}
+    :reframe {:source-paths ["src/cljs_reframe"]
+              :figwheel {:open-urls ["http://localhost:3449/reframe"]
+                         :on-jsload "cljs_reframe.core/main"}
+              :compiler {:main cljs_reframe.core
+                         :asset-path "js/compiled/out_cljs_reframe"
+                         :output-to
+                         "resources/public/js/compiled/cljs_reframe.js"
+                         :output-dir
+                         "resources/public/js/compiled/out_cljs_reframe"
+                         :source-map true
+                         :source-map-timestamp true}}}
 
-              }
-  :profiles {:dev {:dependencies []
+   }
+  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.10"]
+                                  [figwheel-sidecar "0.5.18"]
+                                  [cider/piggieback "0.4.1"]]
+                   :source-paths ["src/cljs"]
+                   :repl-options {:nrepl-middleware
+                                  [cider.piggieback/wrap-cljs-repl]}
                    :plugins [[lein-ancient "0.6.15"]
                              [lein-bikeshed "0.5.2"]
                              [lein-kibit "0.1.6"]
-                             [lein-ring "0.12.5"]]}})
+                             [lein-ring "0.12.5"]]}
+             :reframe {:dependencies [[binaryage/devtools "0.9.10"]
+                                      [figwheel-sidecar "0.5.18"]
+                                      [cider/piggieback "0.4.1"]]
+                       :source-paths ["src/cljs_reframe"]
+                       :repl-options {:nrepl-middleware
+                                      [cider.piggieback/wrap-cljs-repl]}
+                       :plugins [[lein-ancient "0.6.15"]
+                                 [lein-bikeshed "0.5.2"]
+                                 [lein-kibit "0.1.6"]
+                                 [lein-ring "0.12.5"]]}})

@@ -1,4 +1,4 @@
-(ns todomvc.db
+(ns cljs-reframe.db
   (:require [cljs.reader]
             [cljs.spec.alpha :as s]
             [re-frame.core :as re-frame]))

@@ -1,4 +1,4 @@
-(ns full-stack-template.example
+(ns cljs-demo.example
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [ajax.core :refer [GET POST]]
             [cljs-http.client :as http]

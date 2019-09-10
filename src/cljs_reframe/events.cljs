@@ -1,8 +1,8 @@
-(ns todomvc.events
+(ns cljs-reframe.events
   (:require
-    [todomvc.db    :refer [default-db todos->local-store]]
-    [re-frame.core :refer [reg-event-db reg-event-fx inject-cofx path after]]
-    [cljs.spec.alpha :as s]))
+   [cljs-reframe.db    :refer [default-db todos->local-store]]
+   [re-frame.core :refer [reg-event-db reg-event-fx inject-cofx path after]]
+   [cljs.spec.alpha :as s]))
 
 
 ;; -- Interceptors --------------------------------------------------------------
@@ -53,7 +53,7 @@
     (throw (ex-info (str "spec check failed: " (s/explain-str a-spec db)) {}))))
 
 ;; now we create an interceptor using `after`
-(def check-spec-interceptor (after (partial check-and-throw :todomvc.db/db)))
+(def check-spec-interceptor (after (partial check-and-throw :cljs-reframe.db/db)))
 
 
 ;; -- Second Interceptor -----------------------------------------------------

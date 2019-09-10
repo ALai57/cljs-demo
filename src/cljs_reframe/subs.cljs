@@ -1,4 +1,4 @@
-(ns todomvc.subs
+(ns cljs-reframe.subs
   (:require [re-frame.core :refer [reg-sub subscribe]]))
 
 ;; -------------------------------------------------------------------------------------
