@@ -1,34 +1,51 @@
 
+# Description
+
 This is an example app that uses a Clojure backend and Clojurescript frontend.
 The app must run on Java 11.
 
 
-The template includes:
-- Server with handler
-- CLJS app
+__The template includes:__  
+- Server with handler  
+- CLJS app  
+- A  
+- B  
 
 
-*Development environment*
+# Development
 
-How to start server:
+__How to start server:__
 
-```lein run```
-
-
-How to start CLJS:
-
-```lein figwheel```
-
-
-How to start CLJS with in-editor REPLing
+```bash
+lein run
 ```
-Start CLJ repl
 
+
+
+__How to start CLJS:__
+
+```bash
+lein figwheel
+```
+
+
+
+__How to start CLJS with in-editor REPLing__
+
+```clojure
 (use 'figwheel-sidecar.repl-api)
 (start-figwheel! *Optionally insert profile name*)
 (cljs-repl *Optionally insert profile name*)
-
 ```
+
+
+#
+
+
+
+
+
+
 
 
 *How to setup postgres:*
